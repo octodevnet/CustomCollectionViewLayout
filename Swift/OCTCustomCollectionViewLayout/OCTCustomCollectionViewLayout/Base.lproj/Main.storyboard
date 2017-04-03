@@ -41,7 +41,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="62Q-Dm-jC1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="P2b-0m-FaG" customClass="OCTCollectionViewLayout_v1" customModule="OCTCustomCollectionViewLayout" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="P2b-0m-FaG" customClass="OCTCollectionViewLayout_v2" customModule="OCTCustomCollectionViewLayout" customModuleProvider="target"/>
                                 <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="uGD-HK-8ar"/>

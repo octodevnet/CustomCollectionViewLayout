@@ -12,72 +12,16 @@ private let kInterItemsSpacing: CGFloat = 5
 private let kNumberOfColums = 3
 private let kReducedHeightColunmIndex = 1
 private let kItemHeightAspect: CGFloat  = 2
-private let kSectionInsets = UIEdgeInsetsMake(10, 10, 10, 10)
 
 
-class OCTCollectionViewLayout_v1: UICollectionViewLayout {
-    private var layoutMap = [IndexPath : UICollectionViewLayoutAttributes]()
+class OCTCollectionViewLayout_v1: OCTBaseCollectionViewLayout {
     private var itemSize: CGSize!
-    private var contentSize: CGSize!
-    
-    private var totalItemsInSection = 0
-    
-    //MARK: getters
-    override var collectionViewContentSize: CGSize {
-        return self.contentSize
-    }
-    
-    //MARK: Override methods
-    override func prepare() {
-        assert(kReducedHeightColunmIndex < kNumberOfColums, "kReducedHeightColunmIndex should be lower than kNumberOfColums value")
-        
-        layoutMap.removeAll()
-        self.totalItemsInSection = self.collectionView!.numberOfItems(inSection: 0)
-        
-        if self.totalItemsInSection > 0 {
-            self.calculateItemsSize()
 
-            var itemIndex = 0
-            var contentSizeHeight: CGFloat = 0
-            
-            while itemIndex < self.totalItemsInSection {
-                let targetIndexPath = IndexPath(item: itemIndex, section: 0)
-                let attributeRect = self.calculateItemFrame(targetIndexPath)
-                let targetLayoutAttributes = UICollectionViewLayoutAttributes.init(forCellWith: targetIndexPath)
-                targetLayoutAttributes.frame = attributeRect
-                
-                if attributeRect.maxY > contentSizeHeight {
-                    contentSizeHeight = attributeRect.maxY
-                }
-                
-                layoutMap[targetIndexPath] = targetLayoutAttributes
-                itemIndex += 1
-            }
-            
-            
-            self.contentSize = CGSize(width: self.collectionView!.bounds.width,
-                                      height: contentSizeHeight + kSectionInsets.bottom)
-        }
+    override var description: String {
+        return "Layout v1"
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var layoutAttributesArray = [UICollectionViewLayoutAttributes]()
-        
-        for (_, layoutAttributes) in self.layoutMap {
-            if rect.intersects(layoutAttributes.frame) {
-                layoutAttributesArray.append(layoutAttributes)
-            }
-        }
-        
-        return layoutAttributesArray
-    }
-    
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return self.layoutMap[indexPath]
-    }
-    
-    //MARK: Private methods
-    private func calculateItemFrame(_ indexPath: IndexPath) -> CGRect {
+    override func calculateItemFrame(_ indexPath: IndexPath) -> CGRect {
         let columnIndex = indexPath.item % kNumberOfColums
         let rowIndex = indexPath.item / kNumberOfColums
         let isLastItemSingleInRow = indexPath.item == (self.totalItemsInSection - 1) && columnIndex == 0
@@ -85,18 +29,15 @@ class OCTCollectionViewLayout_v1: UICollectionViewLayout {
         let resolvedColumnIndex = isLastItemSingleInRow ? kReducedHeightColunmIndex : columnIndex
         
         //Calculating Point
-        let offsetX = CGFloat(resolvedColumnIndex) * self.itemSize.width + CGFloat(resolvedColumnIndex) * kInterItemsSpacing
-        let pointX = kSectionInsets.left + offsetX
-        
-        let offsetY = CGFloat(rowIndex) * self.itemSize.height + CGFloat(rowIndex) * kInterItemsSpacing
-        var pointY = kSectionInsets.top + offsetY
+        let offsetX = self.sectionInsets.left + CGFloat(resolvedColumnIndex) * self.itemSize.width + CGFloat(resolvedColumnIndex) * kInterItemsSpacing
+        var offsetY = self.sectionInsets.top + CGFloat(rowIndex) * self.itemSize.height + CGFloat(rowIndex) * kInterItemsSpacing
         
         // By our logic, first and last items in reduced height column have height devided by 2.
         // So we need to adjust appropriately all further cell's pointY
         if rowIndex > 0 && resolvedColumnIndex == kReducedHeightColunmIndex {
-            pointY -= halfItemHeight + kInterItemsSpacing
+            offsetY -= halfItemHeight + kInterItemsSpacing
         }
-        let point = CGPoint(x: pointX, y: pointY)
+        let point = CGPoint(x: offsetX, y: offsetY)
         
         //Calculating Size
         var itemHeigh = self.itemSize.height
@@ -109,8 +50,8 @@ class OCTCollectionViewLayout_v1: UICollectionViewLayout {
         return CGRect(origin: point, size: size)
     }
     
-    private func calculateItemsSize() {
-        let contentWidthWithoutIndents = self.collectionView!.bounds.width - kSectionInsets.left - kSectionInsets.right
+    override func calculateItemsSize() {
+        let contentWidthWithoutIndents = self.collectionView!.bounds.width - self.sectionInsets.left - self.sectionInsets.right
         let floatNumberOfColums = CGFloat(kNumberOfColums)
         let itemWidth = (contentWidthWithoutIndents - (floatNumberOfColums - 1) * kInterItemsSpacing) / floatNumberOfColums
         let itemHeight = itemWidth * kItemHeightAspect
