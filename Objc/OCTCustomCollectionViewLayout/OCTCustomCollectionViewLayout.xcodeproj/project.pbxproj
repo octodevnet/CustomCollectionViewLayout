@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AECBCD881E9287D600510A56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD871E9287D600510A56 /* main.m */; };
+		AECBCD8B1E9287D600510A56 /* OCTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD8A1E9287D600510A56 /* OCTAppDelegate.m */; };
+		AECBCD8E1E9287D600510A56 /* OCTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD8D1E9287D600510A56 /* OCTMainViewController.m */; };
+		AECBCD911E9287D600510A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD8F1E9287D600510A56 /* Main.storyboard */; };
+		AECBCD931E9287D600510A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD921E9287D600510A56 /* Assets.xcassets */; };
+		AECBCD961E9287D600510A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD941E9287D600510A56 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AECBCD831E9287D600510A56 /* OCTCustomCollectionViewLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCTCustomCollectionViewLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AECBCD871E9287D600510A56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AECBCD891E9287D600510A56 /* OCTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTAppDelegate.h; sourceTree = "<group>"; };
+		AECBCD8A1E9287D600510A56 /* OCTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTAppDelegate.m; sourceTree = "<group>"; };
+		AECBCD8C1E9287D600510A56 /* OCTMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTMainViewController.h; sourceTree = "<group>"; };
+		AECBCD8D1E9287D600510A56 /* OCTMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTMainViewController.m; sourceTree = "<group>"; };
+		AECBCD901E9287D600510A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AECBCD921E9287D600510A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AECBCD951E9287D600510A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AECBCD971E9287D600510A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AECBCD801E9287D600510A56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AECBCD7A1E9287D600510A56 = {
+			isa = PBXGroup;
+			children = (
+				AECBCD851E9287D600510A56 /* OCTCustomCollectionViewLayout */,
+				AECBCD841E9287D600510A56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AECBCD841E9287D600510A56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AECBCD831E9287D600510A56 /* OCTCustomCollectionViewLayout.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AECBCD851E9287D600510A56 /* OCTCustomCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				AECBCD891E9287D600510A56 /* OCTAppDelegate.h */,
+				AECBCD8A1E9287D600510A56 /* OCTAppDelegate.m */,
+				AECBCD8C1E9287D600510A56 /* OCTMainViewController.h */,
+				AECBCD8D1E9287D600510A56 /* OCTMainViewController.m */,
+				AECBCD8F1E9287D600510A56 /* Main.storyboard */,
+				AECBCD921E9287D600510A56 /* Assets.xcassets */,
+				AECBCD941E9287D600510A56 /* LaunchScreen.storyboard */,
+				AECBCD971E9287D600510A56 /* Info.plist */,
+				AECBCD861E9287D600510A56 /* Supporting Files */,
+			);
+			path = OCTCustomCollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		AECBCD861E9287D600510A56 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AECBCD871E9287D600510A56 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECBCD821E9287D600510A56 /* OCTCustomCollectionViewLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AECBCD9A1E9287D600510A56 /* Build configuration list for PBXNativeTarget "OCTCustomCollectionViewLayout" */;
+			buildPhases = (
+				AECBCD7F1E9287D600510A56 /* Sources */,
+				AECBCD801E9287D600510A56 /* Frameworks */,
+				AECBCD811E9287D600510A56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OCTCustomCollectionViewLayout;
+			productName = OCTCustomCollectionViewLayout;
+			productReference = AECBCD831E9287D600510A56 /* OCTCustomCollectionViewLayout.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AECBCD7B1E9287D600510A56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = dmitry.brovkin;
+				TargetAttributes = {
+					AECBCD821E9287D600510A56 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AECBCD7E1E9287D600510A56 /* Build configuration list for PBXProject "OCTCustomCollectionViewLayout" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AECBCD7A1E9287D600510A56;
+			productRefGroup = AECBCD841E9287D600510A56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECBCD821E9287D600510A56 /* OCTCustomCollectionViewLayout */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AECBCD811E9287D600510A56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECBCD961E9287D600510A56 /* LaunchScreen.storyboard in Resources */,
+				AECBCD931E9287D600510A56 /* Assets.xcassets in Resources */,
+				AECBCD911E9287D600510A56 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AECBCD7F1E9287D600510A56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECBCD8E1E9287D600510A56 /* OCTMainViewController.m in Sources */,
+				AECBCD8B1E9287D600510A56 /* OCTAppDelegate.m in Sources */,
+				AECBCD881E9287D600510A56 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AECBCD8F1E9287D600510A56 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AECBCD901E9287D600510A56 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AECBCD941E9287D600510A56 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AECBCD951E9287D600510A56 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AECBCD981E9287D600510A56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AECBCD991E9287D600510A56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AECBCD9B1E9287D600510A56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OCTCustomCollectionViewLayout/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Octodev.OCTCustomCollectionViewLayout;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AECBCD9C1E9287D600510A56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OCTCustomCollectionViewLayout/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Octodev.OCTCustomCollectionViewLayout;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AECBCD7E1E9287D600510A56 /* Build configuration list for PBXProject "OCTCustomCollectionViewLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AECBCD981E9287D600510A56 /* Debug */,
+				AECBCD991E9287D600510A56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AECBCD9A1E9287D600510A56 /* Build configuration list for PBXNativeTarget "OCTCustomCollectionViewLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AECBCD9B1E9287D600510A56 /* Debug */,
+				AECBCD9C1E9287D600510A56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AECBCD7B1E9287D600510A56 /* Project object */;
+}
