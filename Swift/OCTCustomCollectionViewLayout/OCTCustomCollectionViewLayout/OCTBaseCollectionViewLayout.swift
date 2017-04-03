@@ -70,7 +70,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
         return self.layoutMap[indexPath]
     }
     
-    //MARK: Methods that should be overridden by inheritor
+    //MARK: Abstract methods
     func calculateItemFrame(_ indexPath: IndexPath) -> CGRect {
         return CGRect.zero
     }

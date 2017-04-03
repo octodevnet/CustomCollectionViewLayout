@@ -29,7 +29,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OCTMainViewController" customModule="OCTCustomCollectionViewLayout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OCTMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,7 +41,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="62Q-Dm-jC1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="P2b-0m-FaG" customClass="OCTCollectionViewLayout_v2" customModule="OCTCustomCollectionViewLayout" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="P2b-0m-FaG" customClass="OCTCollectionViewLayout_v1"/>
                                 <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="uGD-HK-8ar"/>
@@ -59,7 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="C7T-t7-Rgt"/>
                     <connections>
-                        <outlet property="collectionView" destination="62Q-Dm-jC1" id="kbd-QF-uLN"/>
+                        <outlet property="collectionView" destination="62Q-Dm-jC1" id="c3y-2H-Los"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="b60-0T-bIA"/>
                     </connections>
                 </viewController>

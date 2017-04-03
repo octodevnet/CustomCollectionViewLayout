@@ -21,7 +21,6 @@ private enum ColumnType: Int {
 class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
     private var mainItemSize: CGSize!
     private var sideItemSize: CGSize!
-    private var contentSize: CGSize!
     
     override var description: String {
         return "Layout v2"

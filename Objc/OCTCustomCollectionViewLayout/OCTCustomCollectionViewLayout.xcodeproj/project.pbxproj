@@ -13,6 +13,9 @@
 		AECBCD911E9287D600510A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD8F1E9287D600510A56 /* Main.storyboard */; };
 		AECBCD931E9287D600510A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD921E9287D600510A56 /* Assets.xcassets */; };
 		AECBCD961E9287D600510A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECBCD941E9287D600510A56 /* LaunchScreen.storyboard */; };
+		AECBCD9F1E9289B000510A56 /* OCTBaseCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD9E1E9289B000510A56 /* OCTBaseCollectionViewLayout.m */; };
+		AECBCDA21E9289BC00510A56 /* OCTCollectionViewLayout_v1.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCDA11E9289BC00510A56 /* OCTCollectionViewLayout_v1.m */; };
+		AECBCDA51E9289C600510A56 /* OCTCollectionViewLayout_v2.m in Sources */ = {isa = PBXBuildFile; fileRef = AECBCDA41E9289C600510A56 /* OCTCollectionViewLayout_v2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		AECBCD921E9287D600510A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AECBCD951E9287D600510A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AECBCD971E9287D600510A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AECBCD9D1E9289B000510A56 /* OCTBaseCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTBaseCollectionViewLayout.h; sourceTree = "<group>"; };
+		AECBCD9E1E9289B000510A56 /* OCTBaseCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTBaseCollectionViewLayout.m; sourceTree = "<group>"; };
+		AECBCDA01E9289BC00510A56 /* OCTCollectionViewLayout_v1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTCollectionViewLayout_v1.h; sourceTree = "<group>"; };
+		AECBCDA11E9289BC00510A56 /* OCTCollectionViewLayout_v1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTCollectionViewLayout_v1.m; sourceTree = "<group>"; };
+		AECBCDA31E9289C600510A56 /* OCTCollectionViewLayout_v2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTCollectionViewLayout_v2.h; sourceTree = "<group>"; };
+		AECBCDA41E9289C600510A56 /* OCTCollectionViewLayout_v2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTCollectionViewLayout_v2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,12 @@
 				AECBCD8A1E9287D600510A56 /* OCTAppDelegate.m */,
 				AECBCD8C1E9287D600510A56 /* OCTMainViewController.h */,
 				AECBCD8D1E9287D600510A56 /* OCTMainViewController.m */,
+				AECBCD9D1E9289B000510A56 /* OCTBaseCollectionViewLayout.h */,
+				AECBCD9E1E9289B000510A56 /* OCTBaseCollectionViewLayout.m */,
+				AECBCDA01E9289BC00510A56 /* OCTCollectionViewLayout_v1.h */,
+				AECBCDA11E9289BC00510A56 /* OCTCollectionViewLayout_v1.m */,
+				AECBCDA31E9289C600510A56 /* OCTCollectionViewLayout_v2.h */,
+				AECBCDA41E9289C600510A56 /* OCTCollectionViewLayout_v2.m */,
 				AECBCD8F1E9287D600510A56 /* Main.storyboard */,
 				AECBCD921E9287D600510A56 /* Assets.xcassets */,
 				AECBCD941E9287D600510A56 /* LaunchScreen.storyboard */,
@@ -150,9 +165,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AECBCDA51E9289C600510A56 /* OCTCollectionViewLayout_v2.m in Sources */,
 				AECBCD8E1E9287D600510A56 /* OCTMainViewController.m in Sources */,
 				AECBCD8B1E9287D600510A56 /* OCTAppDelegate.m in Sources */,
+				AECBCD9F1E9289B000510A56 /* OCTBaseCollectionViewLayout.m in Sources */,
 				AECBCD881E9287D600510A56 /* main.m in Sources */,
+				AECBCDA21E9289BC00510A56 /* OCTCollectionViewLayout_v1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

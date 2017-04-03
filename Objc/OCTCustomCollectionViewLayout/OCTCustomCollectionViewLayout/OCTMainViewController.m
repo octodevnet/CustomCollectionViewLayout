@@ -8,7 +8,10 @@
 
 #import "OCTMainViewController.h"
 
-@interface OCTMainViewController ()
+static NSString *const kReuseCellID = @"reuseCellID";
+
+
+@interface OCTMainViewController () <UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -19,7 +22,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kReuseCellID];
+    self.title = [self.collectionView.collectionViewLayout description];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 12;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseCellID forIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor greenColor];
+    
+    return cell;
 }
 
 @end
