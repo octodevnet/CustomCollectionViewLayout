@@ -15,13 +15,13 @@ class OCTMainViewController: UIViewController, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier:kReuseCellID)
-        self.title = self.collectionView.collectionViewLayout.description
+        automaticallyAdjustsScrollViewInsets = false
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier:kReuseCellID)
+        title = collectionView.collectionViewLayout.description
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 13
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -29,6 +29,11 @@ class OCTMainViewController: UIViewController, UICollectionViewDataSource {
         cell.contentView.backgroundColor = UIColor.green
         
         return cell
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 

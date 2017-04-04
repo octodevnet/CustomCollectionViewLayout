@@ -10,54 +10,61 @@ import UIKit
 
 class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     private var layoutMap = [IndexPath : UICollectionViewLayoutAttributes]()
+    private var columnsOffsetY: [CGFloat]!
     private var contentSize: CGSize!
     
     private(set) var totalItemsInSection = 0
     
+    var totalColumns = 0
+    var interItemsSpacing: CGFloat = 5
+    
     //MARK: getters
     var sectionInsets: UIEdgeInsets {
-        return UIEdgeInsets.zero
+        return collectionView!.contentInset
     }
     
     override var collectionViewContentSize: CGSize {
-        return self.contentSize
+        return contentSize
     }
     
     //MARK: Override methods
     override func prepare() {
         layoutMap.removeAll()
-        self.totalItemsInSection = self.collectionView!.numberOfItems(inSection: 0)
+        columnsOffsetY = Array(repeating: sectionInsets.top, count: totalColumns)
+
+        self.totalItemsInSection = collectionView!.numberOfItems(inSection: 0)
         
-        if self.totalItemsInSection > 0 {
+        if totalItemsInSection > 0 && totalColumns > 0 {
             self.calculateItemsSize()
             
             var itemIndex = 0
             var contentSizeHeight: CGFloat = 0
             
-            while itemIndex < self.totalItemsInSection {
-                let targetIndexPath = IndexPath(item: itemIndex, section: 0)
-                let attributeRect = self.calculateItemFrame(targetIndexPath)
-                let targetLayoutAttributes = UICollectionViewLayoutAttributes.init(forCellWith: targetIndexPath)
+            while itemIndex < totalItemsInSection {
+                let indexPath = IndexPath(item: itemIndex, section: 0)
+                let columnIndex = self.columnIndexForItemAt(indexPath: indexPath)
+
+                let attributeRect = calculateItemFrame(indexPath: indexPath, columnIndex: columnIndex, columnOffsetY: columnsOffsetY[columnIndex])
+                let targetLayoutAttributes = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
                 targetLayoutAttributes.frame = attributeRect
                 
-                if attributeRect.maxY > contentSizeHeight {
-                    contentSizeHeight = attributeRect.maxY
-                }
+                contentSizeHeight = max(attributeRect.maxY, contentSizeHeight)
+                columnsOffsetY[columnIndex] = attributeRect.maxY + interItemsSpacing
+                layoutMap[indexPath] = targetLayoutAttributes
                 
-                layoutMap[targetIndexPath] = targetLayoutAttributes
                 itemIndex += 1
             }
             
             
-            self.contentSize = CGSize(width: self.collectionView!.bounds.width,
-                                      height: contentSizeHeight + sectionInsets.bottom)
+            contentSize = CGSize(width: collectionView!.bounds.width,
+                                 height: contentSizeHeight + sectionInsets.bottom)
         }
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributesArray = [UICollectionViewLayoutAttributes]()
         
-        for (_, layoutAttributes) in self.layoutMap {
+        for (_, layoutAttributes) in layoutMap {
             if rect.intersects(layoutAttributes.frame) {
                 layoutAttributesArray.append(layoutAttributes)
             }
@@ -67,11 +74,14 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return self.layoutMap[indexPath]
+        return layoutMap[indexPath]
     }
     
     //MARK: Abstract methods
-    func calculateItemFrame(_ indexPath: IndexPath) -> CGRect {
+    func columnIndexForItemAt(indexPath: IndexPath) -> Int {
+        return indexPath.item % totalColumns
+    }
+    func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
         return CGRect.zero
     }
     

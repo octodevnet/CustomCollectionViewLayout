@@ -8,57 +8,65 @@
 
 import UIKit
 
-private let kInterItemsSpacing: CGFloat = 5
-private let kNumberOfColums = 3
 private let kReducedHeightColunmIndex = 1
 private let kItemHeightAspect: CGFloat  = 2
 
-
 class OCTCollectionViewLayout_v1: OCTBaseCollectionViewLayout {
     private var itemSize: CGSize!
-
+    private var columnsOffsetX: [CGFloat]!
+    
+    //MARK: Init
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.totalColumns = 3
+    }
+    
+    //MARK: Override getters
     override var description: String {
         return "Layout v1"
     }
     
-    override func calculateItemFrame(_ indexPath: IndexPath) -> CGRect {
-        let columnIndex = indexPath.item % kNumberOfColums
-        let rowIndex = indexPath.item / kNumberOfColums
-        let halfItemHeight = (self.itemSize.height - kInterItemsSpacing) / 2
-        
+    //MARK: Override Abstract methods
+    override func columnIndexForItemAt(indexPath: IndexPath) -> Int {
         //If last item is single in row, we move it to reduced column, to make it looks nice
-        let isLastItemSingleInRow = indexPath.item == (self.totalItemsInSection - 1) && columnIndex == 0
-        let resolvedColumnIndex = isLastItemSingleInRow ? kReducedHeightColunmIndex : columnIndex
+        let columnIndex = indexPath.item % totalColumns
+        return self.isLastItemSingleInRow(indexPath) ? kReducedHeightColunmIndex : columnIndex
+    }
+    
+    override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
+        let rowIndex = indexPath.item / totalColumns
+        let halfItemHeight = (itemSize.height - interItemsSpacing) / 2
         
-        //Calculating Point
-        let offsetX = self.sectionInsets.left + CGFloat(resolvedColumnIndex) * (self.itemSize.width + kInterItemsSpacing)
-        var offsetY = self.sectionInsets.top + CGFloat(rowIndex) * (self.itemSize.height + kInterItemsSpacing)
-        
+        //Resolving Item height
+        var itemHeight = itemSize.height
+
         // By our logic, first and last items in reduced height column have height devided by 2.
-        // So we need to adjust appropriately all further cell's pointY
-        if rowIndex > 0 && resolvedColumnIndex == kReducedHeightColunmIndex {
-            offsetY -= (halfItemHeight + kInterItemsSpacing)
-        }
-        let point = CGPoint(x: offsetX, y: offsetY)
-        
-        //Calculating Size
-        var itemHeight = self.itemSize.height
-        
-        if (rowIndex == 0 && resolvedColumnIndex == kReducedHeightColunmIndex) || isLastItemSingleInRow {
+        if (rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || self.isLastItemSingleInRow(indexPath) {
             itemHeight = halfItemHeight
         }
-        let size = CGSize(width: self.itemSize.width, height: itemHeight)
         
-        return CGRect(origin: point, size: size)
+        return CGRect(x: columnsOffsetX[columnIndex], y: columnOffsetY, width: itemSize.width, height: itemHeight)
     }
     
     override func calculateItemsSize() {
-        let contentWidthWithoutIndents = self.collectionView!.bounds.width - self.sectionInsets.left - self.sectionInsets.right
-        let floatNumberOfColums = CGFloat(kNumberOfColums)
-        let itemWidth = (contentWidthWithoutIndents - (floatNumberOfColums - 1) * kInterItemsSpacing) / floatNumberOfColums
+        let contentWidthWithoutIndents = collectionView!.bounds.width - sectionInsets.left - sectionInsets.right
+        let floatNumberOfColums = CGFloat(totalColumns)
+        let itemWidth = (contentWidthWithoutIndents - (floatNumberOfColums - 1) * interItemsSpacing) / floatNumberOfColums
         let itemHeight = itemWidth * kItemHeightAspect
         
         self.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        
+        // Calculating offsets by X for each column
+        columnsOffsetX = []
+        
+        for columnIndex in 0...(totalColumns - 1) {
+            columnsOffsetX.append(sectionInsets.left + CGFloat(columnIndex) * (itemSize.width + interItemsSpacing))
+        }
+    }
+    
+    //MARK: Private methods
+    private func isLastItemSingleInRow(_ indexPath: IndexPath) -> Bool {
+        return indexPath.item == (totalItemsInSection - 1) && indexPath.item % totalColumns == 0
     }
 }
 
