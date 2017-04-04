@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40EF5DC51E94254200C14DC0 /* OCTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */; };
+		40EF5DC61E94254200C14DC0 /* OCTCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */; };
 		AE4AE4961E8E744E006E9489 /* OCTAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AE4951E8E744E006E9489 /* OCTAppDelegate.swift */; };
 		AE4AE4981E8E744E006E9489 /* OCTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AE4971E8E744E006E9489 /* OCTMainViewController.swift */; };
 		AE4AE49B1E8E744E006E9489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4AE4991E8E744E006E9489 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTCollectionViewCell.swift; sourceTree = "<group>"; };
+		40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OCTCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE4AE4921E8E744E006E9489 /* OCTCustomCollectionViewLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCTCustomCollectionViewLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4AE4951E8E744E006E9489 /* OCTAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCTAppDelegate.swift; sourceTree = "<group>"; };
 		AE4AE4971E8E744E006E9489 /* OCTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCTMainViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				AECBCD781E92689C00510A56 /* OCTBaseCollectionViewLayout.swift */,
 				AE4AE4A71E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift */,
 				AECBCD761E92655F00510A56 /* OCTCollectionViewLayout_v2.swift */,
+				40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */,
+				40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */,
 				AE4AE4991E8E744E006E9489 /* Main.storyboard */,
 				AE4AE49C1E8E744E006E9489 /* Assets.xcassets */,
 				AE4AE49E1E8E744E006E9489 /* LaunchScreen.storyboard */,
@@ -135,6 +141,7 @@
 				AE4AE4A01E8E744E006E9489 /* LaunchScreen.storyboard in Resources */,
 				AE4AE49D1E8E744E006E9489 /* Assets.xcassets in Resources */,
 				AE4AE49B1E8E744E006E9489 /* Main.storyboard in Resources */,
+				40EF5DC61E94254200C14DC0 /* OCTCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +155,7 @@
 				AE4AE4981E8E744E006E9489 /* OCTMainViewController.swift in Sources */,
 				AE4AE4961E8E744E006E9489 /* OCTAppDelegate.swift in Sources */,
 				AECBCD771E92655F00510A56 /* OCTCollectionViewLayout_v2.swift in Sources */,
+				40EF5DC51E94254200C14DC0 /* OCTCollectionViewCell.swift in Sources */,
 				AECBCD791E92689C00510A56 /* OCTBaseCollectionViewLayout.swift in Sources */,
 				AE4AE4A81E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift in Sources */,
 			);

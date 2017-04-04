@@ -16,7 +16,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     private(set) var totalItemsInSection = 0
     
     var totalColumns = 0
-    var interItemsSpacing: CGFloat = 5
+    var interItemsSpacing: CGFloat = 8
     
     //MARK: getters
     var contentInsets: UIEdgeInsets {
@@ -30,7 +30,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     //MARK: Override methods
     override func prepare() {
         layoutMap.removeAll()
-        columnsOffsetY = Array(repeating: contentInsets.top, count: totalColumns)
+        columnsOffsetY = Array(repeating: 0, count: totalColumns)
 
         self.totalItemsInSection = collectionView!.numberOfItems(inSection: 0)
         
@@ -56,8 +56,8 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
             }
             
             
-            contentSize = CGSize(width: collectionView!.bounds.width,
-                                 height: contentSizeHeight + contentInsets.bottom)
+            contentSize = CGSize(width: collectionView!.bounds.width - contentInsets.left - contentInsets.right,
+                                 height: contentSizeHeight)
         }
     }
     

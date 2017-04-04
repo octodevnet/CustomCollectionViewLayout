@@ -60,9 +60,6 @@ class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
         mainItemSize = CGSize(width: mainItemWidth, height: mainItemHeight)
         
         // Calculating offsets by X for each column
-        columnsOffsetX = [
-            contentInsets.left,
-            contentInsets.left + mainItemSize.width + interItemsSpacing
-        ]
+        columnsOffsetX = [0, mainItemSize.width + interItemsSpacing]
     }
 }
