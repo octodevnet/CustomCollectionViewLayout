@@ -63,8 +63,7 @@ static const NSInteger kNumberOfSideItems = 3;
     _mainItemSize = CGSizeMake(mainItemWidth, mainItemHeight);
     
     // Calculating offsets by X for each column
-    _columnsOffsetX = @[@(self.contentInsets.left),
-                        @(self.contentInsets.left + _mainItemSize.width + self.interItemsSpacing)];
+    _columnsOffsetX = @[@(0), @(_mainItemSize.width + self.interItemsSpacing)];
 }
 
 - (NSString *)description {

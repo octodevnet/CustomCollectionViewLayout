@@ -23,7 +23,7 @@
     if (self) {
         _layoutMap = [NSMutableDictionary new];
         self.totalColumns = 0;
-        self.interItemsSpacing = 5;
+        self.interItemsSpacing = 8;
     }
     
     return self;
@@ -67,8 +67,8 @@
             itemIndex += 1;
         }
         
-        _contentSize = CGSizeMake(self.collectionView.bounds.size.width,
-                                  contentSizeHeight + self.contentInsets.bottom);
+        _contentSize = CGSizeMake(self.collectionView.bounds.size.width - self.contentInsets.left - self.contentInsets.right,
+                                  contentSizeHeight);
     }
 }
 

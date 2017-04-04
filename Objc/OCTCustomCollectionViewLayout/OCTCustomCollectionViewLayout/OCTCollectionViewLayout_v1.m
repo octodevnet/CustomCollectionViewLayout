@@ -63,7 +63,7 @@ static const CGFloat kItemHeightAspect = 2;
     _columnsOffsetX = [NSMutableArray new];
     
     for (int columnIndex = 0; columnIndex < self.totalColumns; columnIndex++) {
-        [_columnsOffsetX addObject:@(self.contentInsets.left + columnIndex * (_itemSize.width + self.interItemsSpacing))];
+        [_columnsOffsetX addObject:@(columnIndex * (_itemSize.width + self.interItemsSpacing))];
     }
 }
 
