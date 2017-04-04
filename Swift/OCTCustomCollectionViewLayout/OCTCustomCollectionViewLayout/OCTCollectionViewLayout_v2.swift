@@ -44,7 +44,7 @@ class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
     
     override func calculateItemsSize() {
         let floatNumberOfSideItems = CGFloat(kNumberOfSideItems)
-        let contentWidthWithoutIndents = collectionView!.bounds.width - sectionInsets.left - sectionInsets.right
+        let contentWidthWithoutIndents = collectionView!.bounds.width - contentInsets.left - contentInsets.right
         let resolvedContentWidth = contentWidthWithoutIndents - interItemsSpacing
         
         // We need to calculate side item size first, in order to calculate main item height
@@ -61,8 +61,8 @@ class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
         
         // Calculating offsets by X for each column
         columnsOffsetX = [
-            sectionInsets.left,
-            sectionInsets.left + mainItemSize.width + interItemsSpacing
+            contentInsets.left,
+            contentInsets.left + mainItemSize.width + interItemsSpacing
         ]
     }
 }

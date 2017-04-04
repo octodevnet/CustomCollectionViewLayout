@@ -8,58 +8,73 @@
 
 #import "OCTCollectionViewLayout_v1.h"
 
-static const CGFloat kInterItemsSpacing = 5;
-static const NSInteger kNumberOfColums = 3;
 static const NSInteger kReducedHeightColunmIndex = 1;
 static const CGFloat kItemHeightAspect = 2;
-
 
 @implementation OCTCollectionViewLayout_v1
 {
     CGSize _itemSize;
+    NSMutableArray<NSNumber *> *_columnsOffsetX;
 }
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger columnIndex = indexPath.item % kNumberOfColums;
-    NSInteger rowIndex = indexPath.item / kNumberOfColums;
-    CGFloat halfItemHeight = (_itemSize.height - kInterItemsSpacing) / 2;
+#pragma mark Init
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        self.totalColumns = 3;
+    }
+    
+    return self;
+}
+
+#pragma mark Override Abstract methods
+
+- (NSInteger)columnIndexForItemAtIndexPath:(NSIndexPath *)indexPath {
     //If last item is single in row, we move it to reduced column, to make it looks nice
-    BOOL isLastItemSingleInRow = indexPath.item == (self.totalItemsInSection - 1) && columnIndex == 0;
-    NSInteger resolvedColumnIndex = isLastItemSingleInRow ? kReducedHeightColunmIndex : columnIndex;
+    NSInteger columnIndex = indexPath.item % self.totalColumns;
+    return [self isLastItemSingleInRowForIndexPath:indexPath] ? kReducedHeightColunmIndex : columnIndex;
+}
 
-    //Calculating Point
-    CGFloat offsetX = self.sectionInsets.left + resolvedColumnIndex * (_itemSize.width + kInterItemsSpacing);
-    CGFloat offsetY = self.sectionInsets.top + rowIndex * (_itemSize.height + kInterItemsSpacing);
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
+    NSInteger rowIndex = indexPath.item / self.totalColumns;
+    CGFloat halfItemHeight = (_itemSize.height - self.interItemsSpacing) / 2;
+    
+    //Resolving Item height
+    CGFloat itemHeight = _itemSize.height;
     
     // By our logic, first and last items in reduced height column have height devided by 2.
-    // So we need to adjust appropriately all further cell's pointY
-    if (rowIndex > 0 && resolvedColumnIndex == kReducedHeightColunmIndex) {
-        offsetY -= (halfItemHeight + kInterItemsSpacing);
-    }
-    CGPoint point = CGPointMake(offsetX, offsetY);
-
-    //Calculating Size
-    CGFloat itemHeight = _itemSize.height;
-
-    if ((rowIndex == 0 && resolvedColumnIndex == kReducedHeightColunmIndex) || isLastItemSingleInRow) {
+    if ((rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || [self isLastItemSingleInRowForIndexPath:indexPath]) {
         itemHeight = halfItemHeight;
     }
-    CGSize size = CGSizeMake(_itemSize.width, itemHeight);
-
-    return (CGRect){point, size};
+    
+    return CGRectMake(_columnsOffsetX[columnIndex].floatValue, columnOffsetY, _itemSize.width, itemHeight);
 }
 
 - (void)calculateItemsSize {
-    CGFloat contentWidthWithoutIndents = self.collectionView.bounds.size.width - self.sectionInsets.left - self.sectionInsets.right;
-    CGFloat itemWidth = (contentWidthWithoutIndents - (kNumberOfColums - 1) * kInterItemsSpacing) / kNumberOfColums;
+    CGFloat contentWidthWithoutIndents = self.collectionView.bounds.size.width - self.contentInsets.left - self.contentInsets.right;
+    CGFloat itemWidth = (contentWidthWithoutIndents - (self.totalColumns - 1) * self.interItemsSpacing) / self.totalColumns;
     CGFloat itemHeight = itemWidth * kItemHeightAspect;
 
     _itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+    // Calculating offsets by X for each column
+    _columnsOffsetX = [NSMutableArray new];
+    
+    for (int columnIndex = 0; columnIndex < self.totalColumns; columnIndex++) {
+        [_columnsOffsetX addObject:@(self.contentInsets.left + columnIndex * (_itemSize.width + self.interItemsSpacing))];
+    }
 }
 
 - (NSString *)description {
     return @"Layout v1";
+}
+
+#pragma mark Private methdos
+
+- (BOOL)isLastItemSingleInRowForIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.item == (self.totalItemsInSection - 1) && indexPath.item % self.totalColumns == 0;
 }
 
 @end

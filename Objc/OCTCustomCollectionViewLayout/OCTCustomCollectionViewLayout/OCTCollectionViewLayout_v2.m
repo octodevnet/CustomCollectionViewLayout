@@ -8,50 +8,47 @@
 
 #import "OCTCollectionViewLayout_v2.h"
 
-static const CGFloat kInterItemsSpacing = 5;
 static const CGFloat kSideItemWidthCoef = 0.3;
 static const CGFloat kSideItemHeightAspect = 1;
 static const NSInteger kNumberOfSideItems = 3;
-
-typedef NS_ENUM(NSInteger, ColumnType) {
-    ColumnTypeMain = 0,
-    ColumnTypeSide
-};
 
 @implementation OCTCollectionViewLayout_v2
 {
     CGSize _mainItemSize;
     CGSize _sideItemSize;
+    NSArray<NSNumber *> *_columnsOffsetX;
 }
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger totalItemsInRow = kNumberOfSideItems + 1;
-    NSInteger columnTypeRawValue = indexPath.item % totalItemsInRow;
-    ColumnType columnType = columnTypeRawValue > 1 ? ColumnTypeSide : columnTypeRawValue;
+#pragma mark Init
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     
-    NSInteger mainRowIndex = indexPath.item / totalItemsInRow;
-
-    // By default, we assign params for main item
-    CGFloat offsetX = self.sectionInsets.left;
-    CGFloat offsetY = self.sectionInsets.top + (_mainItemSize.height + kInterItemsSpacing) * mainRowIndex;
-    CGSize size = _mainItemSize;
-
-    // Here we recalculate offsets and size for side items
-    if (columnType == ColumnTypeSide) {
-        NSInteger sideRowIndex = (indexPath.item % totalItemsInRow) - 1;
-
-        offsetX += _mainItemSize.width + kInterItemsSpacing;
-        offsetY += (_sideItemSize.height + kInterItemsSpacing) * sideRowIndex;
-
-        size = _sideItemSize;
+    if (self) {
+        self.totalColumns = 2;
     }
+    
+    return self;
+}
 
-    return CGRectMake(offsetX, offsetY, size.width, size.height);
+#pragma mark Override Abstract methods
+
+- (NSInteger)columnIndexForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger totalItemsInRow = kNumberOfSideItems + 1;
+    NSInteger columnIndex = indexPath.item % totalItemsInRow;
+    NSInteger columnIndexLimit = self.totalColumns - 1;
+    
+    return columnIndex > columnIndexLimit  ? columnIndexLimit : columnIndex;
+}
+
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
+    CGSize size = columnIndex == 0 ? _mainItemSize : _sideItemSize;
+    return CGRectMake(_columnsOffsetX[columnIndex].floatValue, columnOffsetY, size.width, size.height);
 }
 
 - (void)calculateItemsSize {
-    CGFloat contentWidthWithoutIndents = self.collectionView.bounds.size.width - self.sectionInsets.left - self.sectionInsets.right;
-    CGFloat resolvedContentWidth = contentWidthWithoutIndents - kInterItemsSpacing;
+    CGFloat contentWidthWithoutIndents = self.collectionView.bounds.size.width - self.contentInsets.left - self.contentInsets.right;
+    CGFloat resolvedContentWidth = contentWidthWithoutIndents - self.interItemsSpacing;
 
     // We need to calculate side item size first, in order to calculate main item height
     CGFloat sideItemWidth = resolvedContentWidth * kSideItemWidthCoef;
@@ -61,9 +58,13 @@ typedef NS_ENUM(NSInteger, ColumnType) {
 
     // Now we can calculate main item height
     CGFloat mainItemWidth = resolvedContentWidth - sideItemWidth;
-    CGFloat mainItemHeight = sideItemHeight * kNumberOfSideItems + ((kNumberOfSideItems - 1) * kInterItemsSpacing);
+    CGFloat mainItemHeight = sideItemHeight * kNumberOfSideItems + ((kNumberOfSideItems - 1) * self.interItemsSpacing);
 
     _mainItemSize = CGSizeMake(mainItemWidth, mainItemHeight);
+    
+    // Calculating offsets by X for each column
+    _columnsOffsetX = @[@(self.contentInsets.left),
+                        @(self.contentInsets.left + _mainItemSize.width + self.interItemsSpacing)];
 }
 
 - (NSString *)description {

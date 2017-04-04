@@ -11,29 +11,28 @@
 @implementation OCTBaseCollectionViewLayout
 {
     NSMutableDictionary <NSIndexPath *, UICollectionViewLayoutAttributes *>* _layoutMap;
+    NSMutableArray<NSNumber *> *_columnsOffsetY;
     CGSize _contentSize;
 }
 
 #pragma mark Init
-
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        _layoutMap = [NSMutableDictionary new];
-    }
-    
-    return self;
-}
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     
     if (self) {
         _layoutMap = [NSMutableDictionary new];
+        self.totalColumns = 0;
+        self.interItemsSpacing = 5;
     }
     
     return self;
+}
+
+#pragma mark Override getters
+
+- (UIEdgeInsets)contentInsets {
+    return self.collectionView.contentInset;
 }
 
 #pragma mark Override methods
@@ -45,8 +44,9 @@
 - (void)prepareLayout {
     [_layoutMap removeAllObjects];
     _totalItemsInSection = [self.collectionView numberOfItemsInSection:0];
+    _columnsOffsetY = [self initialDataForColumnsOffsetY];
     
-    if (_totalItemsInSection > 0) {
+    if (_totalItemsInSection > 0 && self.totalColumns > 0) {
         [self calculateItemsSize];
         
         NSInteger itemIndex = 0;
@@ -54,20 +54,21 @@
         
         while (itemIndex < _totalItemsInSection) {
             NSIndexPath *targetIndexPath = [NSIndexPath indexPathForItem:itemIndex inSection:0];
-            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath];
+            NSInteger columnIndex = [self columnIndexForItemAtIndexPath:targetIndexPath];
+            
+            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath columnIndex:columnIndex columnOffsetY:_columnsOffsetY[columnIndex].integerValue];
             UICollectionViewLayoutAttributes *targetLayoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:targetIndexPath];
             targetLayoutAttributes.frame = attributeRect;
             
-            if (CGRectGetMaxY(attributeRect) > contentSizeHeight) {
-                contentSizeHeight = CGRectGetMaxY(attributeRect);
-            }
-            
+            contentSizeHeight = MAX(CGRectGetMaxY(attributeRect), contentSizeHeight);
+            _columnsOffsetY[columnIndex] = @(CGRectGetMaxY(attributeRect) + self.interItemsSpacing);
             _layoutMap[targetIndexPath] = targetLayoutAttributes;
+            
             itemIndex += 1;
         }
         
         _contentSize = CGSizeMake(self.collectionView.bounds.size.width,
-                                  contentSizeHeight + self.sectionInsets.bottom);
+                                  contentSizeHeight + self.contentInsets.bottom);
     }
 }
 
@@ -83,16 +84,30 @@
     return layoutAttributesArray;
 }
 
-- (nullable UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     return _layoutMap[indexPath];
 }
 
 #pragma mark Abstract methods
+- (NSInteger)columnIndexForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.item % self.totalItemsInSection;
+}
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath {
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
     return CGRectZero;
 }
 
 - (void)calculateItemsSize {}
+
+#pragma mark Private methods
+
+- (NSMutableArray<NSNumber *> *)initialDataForColumnsOffsetY {
+    NSMutableArray *tempArray = [NSMutableArray new];
+    
+    for (int i = 0; i < self.totalColumns; i++) {
+        [tempArray addObject:@(0)];
+    }
+    return tempArray;
+}
 
 @end

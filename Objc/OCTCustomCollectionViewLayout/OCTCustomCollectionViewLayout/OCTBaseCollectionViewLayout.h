@@ -11,10 +11,14 @@
 @interface OCTBaseCollectionViewLayout : UICollectionViewLayout
 
 @property (nonatomic, readonly) NSInteger totalItemsInSection;
-@property (nonatomic, assign) UIEdgeInsets sectionInsets;
+@property (nonatomic, readonly) UIEdgeInsets contentInsets;
+
+@property (nonatomic, assign) NSInteger totalColumns;
+@property (nonatomic, assign) CGFloat interItemsSpacing;
 
 //These methods should be overriden by inheritor
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)columnIndexForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY;
 - (void)calculateItemsSize;
 
 @end
