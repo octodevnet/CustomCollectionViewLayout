@@ -1,5 +1,5 @@
 //
-//  OCTBaseCollectionViewLayout_v2.h
+//  OCTBaseCollectionViewLayout_v1.h
 //  OCTCustomCollectionViewLayout
 //
 //  Created by dmitry.brovkin on 4/3/17.
@@ -8,6 +8,6 @@
 
 #import "OCTBaseCollectionViewLayout.h"
 
-@interface OCTCollectionViewLayout_v2 : OCTBaseCollectionViewLayout
+@interface OCTGalleryLayout_v1 : OCTBaseCollectionViewLayout
 
 @end

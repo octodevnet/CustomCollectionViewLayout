@@ -6,13 +6,13 @@
 //  Copyright © 2017 dmitry.brovkin. All rights reserved.
 //
 
-#import "OCTCollectionViewLayout_v2.h"
+#import "OCTGalleryLayout_v2.h"
 
 static const CGFloat kSideItemWidthCoef = 0.3;
 static const CGFloat kSideItemHeightAspect = 1;
 static const NSInteger kNumberOfSideItems = 3;
 
-@implementation OCTCollectionViewLayout_v2
+@implementation OCTGalleryLayout_v2
 {
     CGSize _mainItemSize;
     CGSize _sideItemSize;

@@ -6,12 +6,12 @@
 //  Copyright © 2017 dmitry.brovkin. All rights reserved.
 //
 
-#import "OCTCollectionViewLayout_v1.h"
+#import "OCTGalleryLayout_v1.h"
 
 static const NSInteger kReducedHeightColunmIndex = 1;
 static const CGFloat kItemHeightAspect = 2;
 
-@implementation OCTCollectionViewLayout_v1
+@implementation OCTGalleryLayout_v1
 {
     CGSize _itemSize;
     NSMutableArray<NSNumber *> *_columnsOffsetX;

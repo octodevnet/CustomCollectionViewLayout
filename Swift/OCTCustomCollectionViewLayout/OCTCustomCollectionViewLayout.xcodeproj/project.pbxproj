@@ -14,8 +14,8 @@
 		AE4AE49B1E8E744E006E9489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4AE4991E8E744E006E9489 /* Main.storyboard */; };
 		AE4AE49D1E8E744E006E9489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE4AE49C1E8E744E006E9489 /* Assets.xcassets */; };
 		AE4AE4A01E8E744E006E9489 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4AE49E1E8E744E006E9489 /* LaunchScreen.storyboard */; };
-		AE4AE4A81E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AE4A71E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift */; };
-		AECBCD771E92655F00510A56 /* OCTCollectionViewLayout_v2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD761E92655F00510A56 /* OCTCollectionViewLayout_v2.swift */; };
+		AE4AE4A81E8E79A4006E9489 /* OCTGalleryLayout_v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AE4A71E8E79A4006E9489 /* OCTGalleryLayout_v1.swift */; };
+		AECBCD771E92655F00510A56 /* OCTGalleryLayout_v2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD761E92655F00510A56 /* OCTGalleryLayout_v2.swift */; };
 		AECBCD791E92689C00510A56 /* OCTBaseCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECBCD781E92689C00510A56 /* OCTBaseCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +29,8 @@
 		AE4AE49C1E8E744E006E9489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE4AE49F1E8E744E006E9489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE4AE4A11E8E744E006E9489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE4AE4A71E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTCollectionViewLayout_v1.swift; sourceTree = "<group>"; };
-		AECBCD761E92655F00510A56 /* OCTCollectionViewLayout_v2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTCollectionViewLayout_v2.swift; sourceTree = "<group>"; };
+		AE4AE4A71E8E79A4006E9489 /* OCTGalleryLayout_v1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTGalleryLayout_v1.swift; sourceTree = "<group>"; };
+		AECBCD761E92655F00510A56 /* OCTGalleryLayout_v2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTGalleryLayout_v2.swift; sourceTree = "<group>"; };
 		AECBCD781E92689C00510A56 /* OCTBaseCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTBaseCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +67,8 @@
 				AE4AE4951E8E744E006E9489 /* OCTAppDelegate.swift */,
 				AE4AE4971E8E744E006E9489 /* OCTMainViewController.swift */,
 				AECBCD781E92689C00510A56 /* OCTBaseCollectionViewLayout.swift */,
-				AE4AE4A71E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift */,
-				AECBCD761E92655F00510A56 /* OCTCollectionViewLayout_v2.swift */,
+				AE4AE4A71E8E79A4006E9489 /* OCTGalleryLayout_v1.swift */,
+				AECBCD761E92655F00510A56 /* OCTGalleryLayout_v2.swift */,
 				40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */,
 				40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */,
 				AE4AE4991E8E744E006E9489 /* Main.storyboard */,
@@ -154,10 +154,10 @@
 			files = (
 				AE4AE4981E8E744E006E9489 /* OCTMainViewController.swift in Sources */,
 				AE4AE4961E8E744E006E9489 /* OCTAppDelegate.swift in Sources */,
-				AECBCD771E92655F00510A56 /* OCTCollectionViewLayout_v2.swift in Sources */,
+				AECBCD771E92655F00510A56 /* OCTGalleryLayout_v2.swift in Sources */,
 				40EF5DC51E94254200C14DC0 /* OCTCollectionViewCell.swift in Sources */,
 				AECBCD791E92689C00510A56 /* OCTBaseCollectionViewLayout.swift in Sources */,
-				AE4AE4A81E8E79A4006E9489 /* OCTCollectionViewLayout_v1.swift in Sources */,
+				AE4AE4A81E8E79A4006E9489 /* OCTGalleryLayout_v1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

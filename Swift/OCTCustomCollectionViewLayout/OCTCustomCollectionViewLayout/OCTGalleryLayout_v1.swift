@@ -11,7 +11,7 @@ import UIKit
 private let kReducedHeightColunmIndex = 1
 private let kItemHeightAspect: CGFloat  = 2
 
-class OCTCollectionViewLayout_v1: OCTBaseCollectionViewLayout {
+class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
     private var itemSize: CGSize!
     private var columnsOffsetX: [CGFloat]!
     
