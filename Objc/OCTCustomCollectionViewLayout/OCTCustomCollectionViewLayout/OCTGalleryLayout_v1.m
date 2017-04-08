@@ -14,7 +14,7 @@ static const CGFloat kItemHeightAspect = 2;
 @implementation OCTGalleryLayout_v1
 {
     CGSize _itemSize;
-    NSMutableArray<NSNumber *> *_columnsOffsetX;
+    NSMutableArray<NSNumber *> *_columnsXoffset;
 }
 
 #pragma mark Init
@@ -49,7 +49,7 @@ static const CGFloat kItemHeightAspect = 2;
         itemHeight = halfItemHeight;
     }
     
-    return CGRectMake(_columnsOffsetX[columnIndex].floatValue, columnOffsetY, _itemSize.width, itemHeight);
+    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnOffsetY, _itemSize.width, itemHeight);
 }
 
 - (void)calculateItemsSize {
@@ -60,10 +60,10 @@ static const CGFloat kItemHeightAspect = 2;
     _itemSize = CGSizeMake(itemWidth, itemHeight);
     
     // Calculating offsets by X for each column
-    _columnsOffsetX = [NSMutableArray new];
+    _columnsXoffset = [NSMutableArray new];
     
     for (int columnIndex = 0; columnIndex < self.totalColumns; columnIndex++) {
-        [_columnsOffsetX addObject:@(columnIndex * (_itemSize.width + self.interItemsSpacing))];
+        [_columnsXoffset addObject:@(columnIndex * (_itemSize.width + self.interItemsSpacing))];
     }
 }
 

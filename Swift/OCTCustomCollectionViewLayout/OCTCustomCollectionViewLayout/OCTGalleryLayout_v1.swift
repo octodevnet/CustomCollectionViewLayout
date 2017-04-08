@@ -13,7 +13,7 @@ private let kItemHeightAspect: CGFloat  = 2
 
 class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
     private var _itemSize: CGSize!
-    private var _columnsOffsetX: [CGFloat]!
+    private var _columnsXoffset: [CGFloat]!
     
     //MARK: Init
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +45,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
             itemHeight = halfItemHeight
         }
         
-        return CGRect(x: _columnsOffsetX[columnIndex], y: columnOffsetY, width: _itemSize.width, height: itemHeight)
+        return CGRect(x: _columnsXoffset[columnIndex], y: columnOffsetY, width: _itemSize.width, height: itemHeight)
     }
     
     override func calculateItemsSize() {
@@ -56,10 +56,10 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
         _itemSize = CGSize(width: itemWidth, height: itemHeight)
         
         // Calculating offsets by X for each column
-        _columnsOffsetX = []
+        _columnsXoffset = []
         
         for columnIndex in 0...(totalColumns - 1) {
-            _columnsOffsetX.append(CGFloat(columnIndex) * (_itemSize.width + interItemsSpacing))
+            _columnsXoffset.append(CGFloat(columnIndex) * (_itemSize.width + interItemsSpacing))
         }
     }
     

@@ -16,7 +16,7 @@ static const NSInteger kNumberOfSideItems = 3;
 {
     CGSize _mainItemSize;
     CGSize _sideItemSize;
-    NSArray<NSNumber *> *_columnsOffsetX;
+    NSArray<NSNumber *> *_columnsXoffset;
 }
 
 #pragma mark Init
@@ -43,7 +43,7 @@ static const NSInteger kNumberOfSideItems = 3;
 
 - (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
     CGSize size = columnIndex == 0 ? _mainItemSize : _sideItemSize;
-    return CGRectMake(_columnsOffsetX[columnIndex].floatValue, columnOffsetY, size.width, size.height);
+    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnOffsetY, size.width, size.height);
 }
 
 - (void)calculateItemsSize {
@@ -63,7 +63,7 @@ static const NSInteger kNumberOfSideItems = 3;
     _mainItemSize = CGSizeMake(mainItemWidth, mainItemHeight);
     
     // Calculating offsets by X for each column
-    _columnsOffsetX = @[@(0), @(_mainItemSize.width + self.interItemsSpacing)];
+    _columnsXoffset = @[@(0), @(_mainItemSize.width + self.interItemsSpacing)];
 }
 
 - (NSString *)description {

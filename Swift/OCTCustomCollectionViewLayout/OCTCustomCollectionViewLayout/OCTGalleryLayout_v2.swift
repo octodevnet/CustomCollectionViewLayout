@@ -15,7 +15,7 @@ private let kNumberOfSideItems = 3
 class OCTGalleryLayout_v2: OCTBaseCollectionViewLayout {
     private var _mainItemSize: CGSize!
     private var _sideItemSize: CGSize!
-    private var _columnsOffsetX: [CGFloat]!
+    private var _columnsXoffset: [CGFloat]!
 
     //MARK: Init
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +39,7 @@ class OCTGalleryLayout_v2: OCTBaseCollectionViewLayout {
     
     override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
         let size = columnIndex == 0 ? _mainItemSize : _sideItemSize
-        return CGRect(origin: CGPoint(x: _columnsOffsetX[columnIndex], y: columnOffsetY), size: size!)
+        return CGRect(origin: CGPoint(x: _columnsXoffset[columnIndex], y: columnOffsetY), size: size!)
     }
     
     override func calculateItemsSize() {
@@ -60,6 +60,6 @@ class OCTGalleryLayout_v2: OCTBaseCollectionViewLayout {
         _mainItemSize = CGSize(width: mainItemWidth, height: mainItemHeight)
         
         // Calculating offsets by X for each column
-        _columnsOffsetX = [0, _mainItemSize.width + interItemsSpacing]
+        _columnsXoffset = [0, _mainItemSize.width + interItemsSpacing]
     }
 }
