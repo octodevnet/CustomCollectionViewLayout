@@ -10,7 +10,7 @@ import UIKit
 
 class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     private var _layoutMap = [IndexPath : UICollectionViewLayoutAttributes]()
-    private var _columnsOffsetY: [CGFloat]!
+    private var _columnsYoffset: [CGFloat]!
     private var _contentSize: CGSize!
     
     private(set) var totalItemsInSection = 0
@@ -30,7 +30,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     //MARK: Override methods
     override func prepare() {
         _layoutMap.removeAll()
-        _columnsOffsetY = Array(repeating: 0, count: totalColumns)
+        _columnsYoffset = Array(repeating: 0, count: totalColumns)
 
         totalItemsInSection = collectionView!.numberOfItems(inSection: 0)
         
@@ -44,12 +44,12 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
                 let indexPath = IndexPath(item: itemIndex, section: 0)
                 let columnIndex = self.columnIndexForItemAt(indexPath: indexPath)
 
-                let attributeRect = calculateItemFrame(indexPath: indexPath, columnIndex: columnIndex, columnOffsetY: _columnsOffsetY[columnIndex])
+                let attributeRect = calculateItemFrame(indexPath: indexPath, columnIndex: columnIndex, columnOffsetY: _columnsYoffset[columnIndex])
                 let targetLayoutAttributes = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
                 targetLayoutAttributes.frame = attributeRect
                 
                 contentSizeHeight = max(attributeRect.maxY, contentSizeHeight)
-                _columnsOffsetY[columnIndex] = attributeRect.maxY + interItemsSpacing
+                _columnsYoffset[columnIndex] = attributeRect.maxY + interItemsSpacing
                 _layoutMap[indexPath] = targetLayoutAttributes
                 
                 itemIndex += 1

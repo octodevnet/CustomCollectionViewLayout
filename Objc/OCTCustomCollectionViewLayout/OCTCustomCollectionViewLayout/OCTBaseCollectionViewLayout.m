@@ -11,7 +11,7 @@
 @implementation OCTBaseCollectionViewLayout
 {
     NSMutableDictionary <NSIndexPath *, UICollectionViewLayoutAttributes *>* _layoutMap;
-    NSMutableArray<NSNumber *> *_columnsOffsetY;
+    NSMutableArray<NSNumber *> *_columnsYoffset;
     CGSize _contentSize;
 }
 
@@ -44,7 +44,7 @@
 - (void)prepareLayout {
     [_layoutMap removeAllObjects];
     _totalItemsInSection = [self.collectionView numberOfItemsInSection:0];
-    _columnsOffsetY = [self initialDataForColumnsOffsetY];
+    _columnsYoffset = [self initialDataForColumnsOffsetY];
     
     if (_totalItemsInSection > 0 && self.totalColumns > 0) {
         [self calculateItemsSize];
@@ -56,12 +56,12 @@
             NSIndexPath *targetIndexPath = [NSIndexPath indexPathForItem:itemIndex inSection:0];
             NSInteger columnIndex = [self columnIndexForItemAtIndexPath:targetIndexPath];
             
-            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath columnIndex:columnIndex columnOffsetY:_columnsOffsetY[columnIndex].integerValue];
+            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath columnIndex:columnIndex columnOffsetY:_columnsYoffset[columnIndex].integerValue];
             UICollectionViewLayoutAttributes *targetLayoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:targetIndexPath];
             targetLayoutAttributes.frame = attributeRect;
             
             contentSizeHeight = MAX(CGRectGetMaxY(attributeRect), contentSizeHeight);
-            _columnsOffsetY[columnIndex] = @(CGRectGetMaxY(attributeRect) + self.interItemsSpacing);
+            _columnsYoffset[columnIndex] = @(CGRectGetMaxY(attributeRect) + self.interItemsSpacing);
             _layoutMap[targetIndexPath] = targetLayoutAttributes;
             
             itemIndex += 1;
