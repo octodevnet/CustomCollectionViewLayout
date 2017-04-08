@@ -12,8 +12,8 @@ private let kReducedHeightColunmIndex = 1
 private let kItemHeightAspect: CGFloat  = 2
 
 class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
-    private var itemSize: CGSize!
-    private var columnsOffsetX: [CGFloat]!
+    private var _itemSize: CGSize!
+    private var _columnsOffsetX: [CGFloat]!
     
     //MARK: Init
     required init?(coder aDecoder: NSCoder) {
@@ -35,17 +35,17 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
     
     override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
         let rowIndex = indexPath.item / totalColumns
-        let halfItemHeight = (itemSize.height - interItemsSpacing) / 2
+        let halfItemHeight = (_itemSize.height - interItemsSpacing) / 2
         
         //Resolving Item height
-        var itemHeight = itemSize.height
+        var itemHeight = _itemSize.height
 
         // By our logic, first and last items in reduced height column have height devided by 2.
         if (rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || self.isLastItemSingleInRow(indexPath) {
             itemHeight = halfItemHeight
         }
         
-        return CGRect(x: columnsOffsetX[columnIndex], y: columnOffsetY, width: itemSize.width, height: itemHeight)
+        return CGRect(x: _columnsOffsetX[columnIndex], y: columnOffsetY, width: _itemSize.width, height: itemHeight)
     }
     
     override func calculateItemsSize() {
@@ -53,13 +53,13 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
         let itemWidth = (contentWidthWithoutIndents - (CGFloat(totalColumns) - 1) * interItemsSpacing) / CGFloat(totalColumns)
         let itemHeight = itemWidth * kItemHeightAspect
         
-        self.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        _itemSize = CGSize(width: itemWidth, height: itemHeight)
         
         // Calculating offsets by X for each column
-        columnsOffsetX = []
+        _columnsOffsetX = []
         
         for columnIndex in 0...(totalColumns - 1) {
-            columnsOffsetX.append(CGFloat(columnIndex) * (itemSize.width + interItemsSpacing))
+            _columnsOffsetX.append(CGFloat(columnIndex) * (_itemSize.width + interItemsSpacing))
         }
     }
     

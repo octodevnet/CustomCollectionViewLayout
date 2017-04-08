@@ -13,9 +13,9 @@ private let kSideItemHeightAspect: CGFloat = 1
 private let kNumberOfSideItems = 3
 
 class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
-    private var mainItemSize: CGSize!
-    private var sideItemSize: CGSize!
-    private var columnsOffsetX: [CGFloat]!
+    private var _mainItemSize: CGSize!
+    private var _sideItemSize: CGSize!
+    private var _columnsOffsetX: [CGFloat]!
 
     //MARK: Init
     required init?(coder aDecoder: NSCoder) {
@@ -38,8 +38,8 @@ class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
     }
     
     override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
-        let size = columnIndex == 0 ? mainItemSize : sideItemSize
-        return CGRect(origin: CGPoint(x: columnsOffsetX[columnIndex], y: columnOffsetY), size: size!)
+        let size = columnIndex == 0 ? _mainItemSize : _sideItemSize
+        return CGRect(origin: CGPoint(x: _columnsOffsetX[columnIndex], y: columnOffsetY), size: size!)
     }
     
     override func calculateItemsSize() {
@@ -51,15 +51,15 @@ class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
         let sideItemWidth = resolvedContentWidth * kSideItemWidthCoef
         let sideItemHeight = sideItemWidth * kSideItemHeightAspect
         
-        sideItemSize = CGSize(width: sideItemWidth, height: sideItemHeight)
+        _sideItemSize = CGSize(width: sideItemWidth, height: sideItemHeight)
         
         // Now we can calculate main item height
         let mainItemWidth = resolvedContentWidth - sideItemWidth
         let mainItemHeight = sideItemHeight * floatNumberOfSideItems + ((floatNumberOfSideItems - 1) * interItemsSpacing)
         
-        mainItemSize = CGSize(width: mainItemWidth, height: mainItemHeight)
+        _mainItemSize = CGSize(width: mainItemWidth, height: mainItemHeight)
         
         // Calculating offsets by X for each column
-        columnsOffsetX = [0, mainItemSize.width + interItemsSpacing]
+        _columnsOffsetX = [0, _mainItemSize.width + interItemsSpacing]
     }
 }
