@@ -12,7 +12,7 @@ private let kSideItemWidthCoef: CGFloat = 0.3
 private let kSideItemHeightAspect: CGFloat = 1
 private let kNumberOfSideItems = 3
 
-class OCTCollectionViewLayout_v2: OCTBaseCollectionViewLayout {
+class OCTGalleryLayout_v2: OCTBaseCollectionViewLayout {
     private var _mainItemSize: CGSize!
     private var _sideItemSize: CGSize!
     private var _columnsOffsetX: [CGFloat]!
