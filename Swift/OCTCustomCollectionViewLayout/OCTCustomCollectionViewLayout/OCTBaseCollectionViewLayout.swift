@@ -44,7 +44,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
                 let indexPath = IndexPath(item: itemIndex, section: 0)
                 let columnIndex = self.columnIndexForItemAt(indexPath: indexPath)
 
-                let attributeRect = calculateItemFrame(indexPath: indexPath, columnIndex: columnIndex, columnOffsetY: _columnsYoffset[columnIndex])
+                let attributeRect = calculateItemFrame(indexPath: indexPath, columnIndex: columnIndex, columnYoffset: _columnsYoffset[columnIndex])
                 let targetLayoutAttributes = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
                 targetLayoutAttributes.frame = attributeRect
                 
@@ -81,7 +81,7 @@ class OCTBaseCollectionViewLayout: UICollectionViewLayout {
     func columnIndexForItemAt(indexPath: IndexPath) -> Int {
         return indexPath.item % totalColumns
     }
-    func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
+    func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnYoffset: CGFloat) -> CGRect {
         return CGRect.zero
     }
     

@@ -33,7 +33,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
         return self.isLastItemSingleInRow(indexPath) ? kReducedHeightColunmIndex : columnIndex
     }
     
-    override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
+    override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnYoffset: CGFloat) -> CGRect {
         let rowIndex = indexPath.item / totalColumns
         let halfItemHeight = (_itemSize.height - interItemsSpacing) / 2
         
@@ -45,7 +45,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
             itemHeight = halfItemHeight
         }
         
-        return CGRect(x: _columnsXoffset[columnIndex], y: columnOffsetY, width: _itemSize.width, height: itemHeight)
+        return CGRect(x: _columnsXoffset[columnIndex], y: columnYoffset, width: _itemSize.width, height: itemHeight)
     }
     
     override func calculateItemsSize() {

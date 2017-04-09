@@ -37,9 +37,9 @@ class OCTGalleryLayout_v2: OCTBaseCollectionViewLayout {
         return columnIndex > columnIndexLimit  ? columnIndexLimit : columnIndex
     }
     
-    override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnOffsetY: CGFloat) -> CGRect {
+    override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnYoffset: CGFloat) -> CGRect {
         let size = columnIndex == 0 ? _mainItemSize : _sideItemSize
-        return CGRect(origin: CGPoint(x: _columnsXoffset[columnIndex], y: columnOffsetY), size: size!)
+        return CGRect(origin: CGPoint(x: _columnsXoffset[columnIndex], y: columnYoffset), size: size!)
     }
     
     override func calculateItemsSize() {

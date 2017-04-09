@@ -37,7 +37,7 @@ static const CGFloat kItemHeightAspect = 2;
     return [self isLastItemSingleInRowForIndexPath:indexPath] ? kReducedHeightColunmIndex : columnIndex;
 }
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnYoffset:(CGFloat)columnYoffset {
     NSInteger rowIndex = indexPath.item / self.totalColumns;
     CGFloat halfItemHeight = (_itemSize.height - self.interItemsSpacing) / 2;
     
@@ -49,7 +49,7 @@ static const CGFloat kItemHeightAspect = 2;
         itemHeight = halfItemHeight;
     }
     
-    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnOffsetY, _itemSize.width, itemHeight);
+    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnYoffset, _itemSize.width, itemHeight);
 }
 
 - (void)calculateItemsSize {

@@ -56,7 +56,7 @@
             NSIndexPath *targetIndexPath = [NSIndexPath indexPathForItem:itemIndex inSection:0];
             NSInteger columnIndex = [self columnIndexForItemAtIndexPath:targetIndexPath];
             
-            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath columnIndex:columnIndex columnOffsetY:_columnsYoffset[columnIndex].integerValue];
+            CGRect attributeRect = [self calculateItemFrameAtIndexPath:targetIndexPath columnIndex:columnIndex columnYoffset:_columnsYoffset[columnIndex].integerValue];
             UICollectionViewLayoutAttributes *targetLayoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:targetIndexPath];
             targetLayoutAttributes.frame = attributeRect;
             
@@ -93,7 +93,7 @@
     return indexPath.item % self.totalItemsInSection;
 }
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnYoffset:(CGFloat)columnYoffset {
     return CGRectZero;
 }
 

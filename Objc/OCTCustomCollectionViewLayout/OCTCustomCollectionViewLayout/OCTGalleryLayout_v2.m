@@ -41,9 +41,9 @@ static const NSInteger kNumberOfSideItems = 3;
     return columnIndex > columnIndexLimit  ? columnIndexLimit : columnIndex;
 }
 
-- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnOffsetY:(CGFloat)columnOffsetY {
+- (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnYoffset:(CGFloat)columnYoffset {
     CGSize size = columnIndex == 0 ? _mainItemSize : _sideItemSize;
-    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnOffsetY, size.width, size.height);
+    return CGRectMake(_columnsXoffset[columnIndex].floatValue, columnYoffset, size.width, size.height);
 }
 
 - (void)calculateItemsSize {
