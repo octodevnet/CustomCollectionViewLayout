@@ -44,7 +44,7 @@ static const CGFloat kItemHeightAspect = 2;
     //Resolving Item height
     CGFloat itemHeight = _itemSize.height;
     
-    // By our logic, first and last items in reduced height column have height devided by 2.
+    // By our logic, first and last items in reduced height column have height divided by 2.
     if ((rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || [self isLastItemSingleInRowForIndexPath:indexPath]) {
         itemHeight = halfItemHeight;
     }

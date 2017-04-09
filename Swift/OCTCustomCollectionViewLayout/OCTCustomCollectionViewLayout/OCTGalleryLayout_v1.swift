@@ -40,7 +40,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
         //Resolving Item height
         var itemHeight = _itemSize.height
 
-        // By our logic, first and last items in reduced height column have height devided by 2.
+        // By our logic, first and last items in reduced height column have height divided by 2.
         if (rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || self.isLastItemSingleInRow(indexPath) {
             itemHeight = halfItemHeight
         }
