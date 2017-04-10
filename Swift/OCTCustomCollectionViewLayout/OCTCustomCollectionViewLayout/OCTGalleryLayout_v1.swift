@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kReducedHeightColunmIndex = 1
+private let kReducedHeightColumnIndex = 1
 private let kItemHeightAspect: CGFloat  = 2
 
 class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
@@ -30,7 +30,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
     override func columnIndexForItemAt(indexPath: IndexPath) -> Int {
         //If last item is single in row, we move it to reduced column, to make it looks nice
         let columnIndex = indexPath.item % totalColumns
-        return self.isLastItemSingleInRow(indexPath) ? kReducedHeightColunmIndex : columnIndex
+        return self.isLastItemSingleInRow(indexPath) ? kReducedHeightColumnIndex : columnIndex
     }
     
     override func calculateItemFrame(indexPath: IndexPath, columnIndex: Int, columnYoffset: CGFloat) -> CGRect {
@@ -41,7 +41,7 @@ class OCTGalleryLayout_v1: OCTBaseCollectionViewLayout {
         var itemHeight = _itemSize.height
 
         // By our logic, first and last items in reduced height column have height divided by 2.
-        if (rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || self.isLastItemSingleInRow(indexPath) {
+        if (rowIndex == 0 && columnIndex == kReducedHeightColumnIndex) || self.isLastItemSingleInRow(indexPath) {
             itemHeight = halfItemHeight
         }
         

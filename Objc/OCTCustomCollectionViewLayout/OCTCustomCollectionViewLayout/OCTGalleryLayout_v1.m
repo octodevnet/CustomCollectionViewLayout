@@ -8,7 +8,7 @@
 
 #import "OCTGalleryLayout_v1.h"
 
-static const NSInteger kReducedHeightColunmIndex = 1;
+static const NSInteger kReducedHeightColumnIndex = 1;
 static const CGFloat kItemHeightAspect = 2;
 
 @implementation OCTGalleryLayout_v1
@@ -34,7 +34,7 @@ static const CGFloat kItemHeightAspect = 2;
 - (NSInteger)columnIndexForItemAtIndexPath:(NSIndexPath *)indexPath {
     //If last item is single in row, we move it to reduced column, to make it looks nice
     NSInteger columnIndex = indexPath.item % self.totalColumns;
-    return [self isLastItemSingleInRowForIndexPath:indexPath] ? kReducedHeightColunmIndex : columnIndex;
+    return [self isLastItemSingleInRowForIndexPath:indexPath] ? kReducedHeightColumnIndex : columnIndex;
 }
 
 - (CGRect)calculateItemFrameAtIndexPath:(NSIndexPath *)indexPath columnIndex:(NSInteger)columnIndex columnYoffset:(CGFloat)columnYoffset {
@@ -45,7 +45,7 @@ static const CGFloat kItemHeightAspect = 2;
     CGFloat itemHeight = _itemSize.height;
     
     // By our logic, first and last items in reduced height column have height divided by 2.
-    if ((rowIndex == 0 && columnIndex == kReducedHeightColunmIndex) || [self isLastItemSingleInRowForIndexPath:indexPath]) {
+    if ((rowIndex == 0 && columnIndex == kReducedHeightColumnIndex) || [self isLastItemSingleInRowForIndexPath:indexPath]) {
         itemHeight = halfItemHeight;
     }
     
