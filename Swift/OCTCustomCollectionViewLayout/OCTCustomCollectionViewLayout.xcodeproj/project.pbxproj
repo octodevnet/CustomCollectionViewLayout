@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		407D818C20640D010074AB9A /* OCTInstgramLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D818B20640D010074AB9A /* OCTInstgramLayout.swift */; };
 		40EF5DC51E94254200C14DC0 /* OCTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */; };
 		40EF5DC61E94254200C14DC0 /* OCTCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */; };
 		AE4AE4961E8E744E006E9489 /* OCTAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AE4951E8E744E006E9489 /* OCTAppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		407D818B20640D010074AB9A /* OCTInstgramLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCTInstgramLayout.swift; sourceTree = "<group>"; };
 		40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCTCollectionViewCell.swift; sourceTree = "<group>"; };
 		40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OCTCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE4AE4921E8E744E006E9489 /* OCTCustomCollectionViewLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCTCustomCollectionViewLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				AECBCD781E92689C00510A56 /* OCTBaseCollectionViewLayout.swift */,
 				AE4AE4A71E8E79A4006E9489 /* OCTGalleryLayout_v1.swift */,
 				AECBCD761E92655F00510A56 /* OCTGalleryLayout_v2.swift */,
+				407D818B20640D010074AB9A /* OCTInstgramLayout.swift */,
 				40EF5DC31E94254200C14DC0 /* OCTCollectionViewCell.swift */,
 				40EF5DC41E94254200C14DC0 /* OCTCollectionViewCell.xib */,
 				AE4AE4991E8E744E006E9489 /* Main.storyboard */,
@@ -157,6 +160,7 @@
 				AE4AE4961E8E744E006E9489 /* OCTAppDelegate.swift in Sources */,
 				AECBCD771E92655F00510A56 /* OCTGalleryLayout_v2.swift in Sources */,
 				40EF5DC51E94254200C14DC0 /* OCTCollectionViewCell.swift in Sources */,
+				407D818C20640D010074AB9A /* OCTInstgramLayout.swift in Sources */,
 				AECBCD791E92689C00510A56 /* OCTBaseCollectionViewLayout.swift in Sources */,
 				AE4AE4A81E8E79A4006E9489 /* OCTGalleryLayout_v1.swift in Sources */,
 			);
